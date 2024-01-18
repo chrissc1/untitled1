@@ -28,8 +28,6 @@ public class MarbleManager {
         } else {
             rights++;
             System.out.println("Congratulations! You guessed the correct number of marbles: " + actualMarbles);
-            System.out.println("-------------Stats-------------");
-            System.out.println(stats());
             hasGuessedCorrectly = true;
         }
     }
@@ -48,14 +46,41 @@ public class MarbleManager {
         return actualMarbles;
     }
 
-    private String stats() {
-        return "Correct Guesses: " + rights + " Incorrect Guesses: " + wrong + " You went " + posOrNeg();
-    }
 
-    private String posOrNeg() {
+    public String posOrNeg() {
         if (rights > wrong) {
             return "Positive";
         }
         return "Negative";
+    }
+
+    public void playGame() {
+        do {
+            resetGame();
+            playRound();
+        } while (askPlayAgain());
+    }
+
+    private void playRound() {
+        while (!hasGuessedCorrectly()) {
+            System.out.print("Enter your guess: ");
+            int userGuess = scan.nextInt();
+            processGuess(userGuess);
+        }
+    }
+
+    private boolean askPlayAgain() {
+        System.out.print("Do you want to play again? (yes/no): ");
+        String response = scan.next().toLowerCase();
+        return response.equals("yes");
+    }
+
+
+    public int getRights() {
+        return rights;
+    }
+
+    public int getWrong() {
+        return wrong;
     }
 }
