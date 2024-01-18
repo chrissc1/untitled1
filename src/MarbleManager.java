@@ -42,10 +42,6 @@ public class MarbleManager {
         this.hasGuessedCorrectly = false;
     }
 
-    public int getActualMarbles() {
-        return actualMarbles;
-    }
-
 
     public String posOrNeg() {
         if (rights > wrong) {
@@ -53,28 +49,6 @@ public class MarbleManager {
         }
         return "Negative";
     }
-
-    public void playGame() {
-        do {
-            resetGame();
-            playRound();
-        } while (askPlayAgain());
-    }
-
-    private void playRound() {
-        while (!hasGuessedCorrectly()) {
-            System.out.print("Enter your guess: ");
-            int userGuess = scan.nextInt();
-            processGuess(userGuess);
-        }
-    }
-
-    private boolean askPlayAgain() {
-        System.out.print("Do you want to play again? (yes/no): ");
-        String response = scan.next().toLowerCase();
-        return response.equals("yes");
-    }
-
 
     public int getRights() {
         return rights;
