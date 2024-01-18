@@ -39,8 +39,8 @@ public class GameEngine {
     }
 
     public void displayRules() {
-        System.out.println("Welcome " + name + " to the Marble Guessing Game!");
-        System.out.println("I have a random number of marbles. Can you guess how many?");
+        System.out.println("\033[0;34mWelcome " + name + " to the Marble Guessing Game!\033[0m");
+        System.out.println("\033[0;34mI have a random number of marbles. Can you guess how many?\033[0m");
     }
 
     public int getUserInput() {
